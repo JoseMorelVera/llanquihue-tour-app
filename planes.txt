@@ -1,0 +1,5 @@
+Trekking;Cerro Molino;19990;Juan Lopez 
+Visita museo;Parque nacional;25990;Maria Vera
+Termas;Termas Llanquihue;45990;Luis Varas
+Camping;Parque sector privado;60990;Antonia Morel
+Pesca;Lago Llanquihue;84990;Andres Quintanilla
