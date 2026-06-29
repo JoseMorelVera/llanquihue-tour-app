@@ -4,63 +4,39 @@
  */
 package data;
 
-import model.Planes;
-import model.Cliente;
-import model.Direccion;
-import model.Guia;
-import model.Planes;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
+import model.ServicioTuristico;
+import model.RutaGastronomica;
+import model.PaseoLacustre;
+import model.ExcursionCultural;
 
 public class GestorDatos {
-    
-    public ArrayList<Planes> cargarPlanes(String rutaArchivo) { 
+
+     public void ejecutarPrueba() {
         
-        ArrayList<Planes> listaPlanes = new ArrayList<>();
+        // objetos de la clase Ruta gastronomica 
+        RutaGastronomica ruta1 = new RutaGastronomica("Ruta del vino", 4 , 3 );
+        RutaGastronomica ruta2 = new RutaGastronomica("Sabores locales", 6, 4 );
         
-        try { 
-            BufferedReader lector = new BufferedReader(new FileReader(rutaArchivo));
-            
-            String linea;
-            
-            while ((linea = lector.readLine()) != null ) { 
-                String[] partes = linea.split(";");
-                
-                if(partes.length == 4 ) {
-                    
-                    String actividad = partes[0];
-                    String lugar = partes[1];
-                    int precio = Integer.parseInt(partes[2]);
-                    String nombreGuia = partes [3];
-                    
-                    Guia guia = new Guia(nombreGuia, "Local");
-                    Planes plan = new Planes(actividad, lugar, precio, guia);
-                    
-                    listaPlanes.add(plan);
-                    
-                }
-            }
-            
-            lector.close();
-            
-        }catch (IOException e ) {
-            System.out.println("Error al leer el archivo");
-            
-        }
+        System.out.println(ruta1);
+        System.out.println(ruta2);
+        System.out.println();
         
-        return listaPlanes;
-    }
-    
-    public ArrayList<Planes> filtrarPlanesPorActividad(ArrayList<Planes> todosLosPlanes, String actividadBuscar) {
-        ArrayList<Planes> filtrados = new ArrayList<>();
-        for (Planes p : todosLosPlanes) {
-            if (p.getActividad().equalsIgnoreCase(actividadBuscar)) {
-                filtrados.add(p);
-            }
-        }
-        return filtrados;
+        // objetos de la clase paseo lacustre 
+        PaseoLacustre paseo1 = new PaseoLacustre("Visita volcan osorno", 3 , "Movilizacion local");
+        PaseoLacustre paseo2 = new PaseoLacustre("Tour por el lago", 5, "Lancha");
+        
+        System.out.println(paseo1);
+        System.out.println(paseo2);
+        System.out.println();
+        
+        // objetos de la clase excursion cultural
+        ExcursionCultural excursion1 = new ExcursionCultural("Colonos Alemanes", 6 , "Frutillar");
+        ExcursionCultural excursion2 = new ExcursionCultural("Historia Patrimonial", 5 , "Puerto Varas");
+        
+        System.out.println(excursion1);
+        System.out.println(excursion2);
+        System.out.println();
+        
     }
     
 }
