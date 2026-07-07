@@ -4,7 +4,9 @@
  */
 package IU;
 
-import data.GestorDatos;
+import data.GestorServicioTuristico;
+import model.ServicioTuristico;
+import java.util.ArrayList;
 
 public class LLanquihueTourApp {
 
