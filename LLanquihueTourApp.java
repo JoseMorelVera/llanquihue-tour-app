@@ -10,13 +10,16 @@ public class LLanquihueTourApp {
 
     public static void main(String[] args) {
         
-        System.out.println("=============================");
-        System.out.println("   VISUALIZACION DE PLANES   ");
-        System.out.println("=============================");
-        System.out.println();
+        GestorServicioTuristico gestor = new GestorServicioTuristico();
         
-        GestorDatos gestor = new GestorDatos();
-        gestor.ejecutarPrueba();
+        ArrayList<ServicioTuristico> lista = gestor.generarServicioTuristico();
+
+        
+        System.out.println("--- LISTADO DE SERVICIOS TURISTICOS ---");
+        for (ServicioTuristico servicio : lista) {
+            servicio.mostrarInformacion();
+            System.out.println("-----------------------------------");
+        }
         
     }
     
