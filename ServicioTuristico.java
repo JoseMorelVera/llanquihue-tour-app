@@ -45,5 +45,9 @@ public class ServicioTuristico {
         return "Nombre: " + nombre +
                 " | Duracion: " + duracionHoras;
     }
-    
+
+    public void mostrarInformacion() {
+        System.out.println(" Nombre : " + nombre );
+        System.out.println(" Duracion de la actividad : " + duracionHoras );
+    }
 }

@@ -4,63 +4,26 @@
  */
 package data;
 
-import model.Planes;
-import model.Cliente;
-import model.Direccion;
-import model.Guia;
-import model.Planes;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
+import model.ServicioTuristico;
+import model.RutaGastronomica;
+import model.PaseoLacustre;
+import model.ExcursionCultural;
 
-public class GestorDatos {
+public class GestorServicioTuristico {
     
-    public ArrayList<Planes> cargarPlanes(String rutaArchivo) { 
+    public ArrayList<ServicioTuristico> generarServicioTuristico() {
         
-        ArrayList<Planes> listaPlanes = new ArrayList<>();
+        ArrayList<ServicioTuristico> servicioTuristico = new ArrayList<>();
         
-        try { 
-            BufferedReader lector = new BufferedReader(new FileReader(rutaArchivo));
-            
-            String linea;
-            
-            while ((linea = lector.readLine()) != null ) { 
-                String[] partes = linea.split(";");
-                
-                if(partes.length == 4 ) {
-                    
-                    String actividad = partes[0];
-                    String lugar = partes[1];
-                    int precio = Integer.parseInt(partes[2]);
-                    String nombreGuia = partes [3];
-                    
-                    Guia guia = new Guia(nombreGuia, "Local");
-                    Planes plan = new Planes(actividad, lugar, precio, guia);
-                    
-                    listaPlanes.add(plan);
-                    
-                }
-            }
-            
-            lector.close();
-            
-        }catch (IOException e ) {
-            System.out.println("Error al leer el archivo");
-            
-        }
+        servicioTuristico.add(new RutaGastronomica("Degustacion de queso", 4 , 3));
+        servicioTuristico.add(new PaseoLacustre("Lago Manantiales", 4 , "Lancha"));
+        servicioTuristico.add(new ExcursionCultural("Visita museo", 3 , "Museo de ilustraciones"));
+        servicioTuristico.add(new RutaGastronomica("Fabrica de chocolate", 5 , 2));
+        servicioTuristico.add(new PaseoLacustre("Paseo Monte Isabella", 5 , "caminata"));
+        servicioTuristico.add(new ExcursionCultural("Recorrido historico", 6 , "Ruinas indigenas"));
         
-        return listaPlanes;
+        return servicioTuristico;
+        
     }
-    
-    public ArrayList<Planes> filtrarPlanesPorActividad(ArrayList<Planes> todosLosPlanes, String actividadBuscar) {
-        ArrayList<Planes> filtrados = new ArrayList<>();
-        for (Planes p : todosLosPlanes) {
-            if (p.getActividad().equalsIgnoreCase(actividadBuscar)) {
-                filtrados.add(p);
-            }
-        }
-        return filtrados;
-    }
-    
 }
+
