@@ -4,26 +4,60 @@
  */
 package data;
 
-import model.ServicioTuristico;
-import model.RutaGastronomica;
-import model.PaseoLacustre;
-import model.ExcursionCultural;
+import model.ColaboradorExterno;
+import model.GuiaTuristico;
+import model.Vehiculo;
+import model.RecursoAgencia;
+import java.util.ArrayList;
+import java.util.List;
 
-public class GestorServicioTuristico {
+public class GestorEntidades {
     
-    public ArrayList<ServicioTuristico> generarServicioTuristico() {
-        
-        ArrayList<ServicioTuristico> servicioTuristico = new ArrayList<>();
-        
-        servicioTuristico.add(new RutaGastronomica("Degustacion de queso", 4 , 3));
-        servicioTuristico.add(new PaseoLacustre("Lago Manantiales", 4 , "Lancha"));
-        servicioTuristico.add(new ExcursionCultural("Visita museo", 3 , "Museo de ilustraciones"));
-        servicioTuristico.add(new RutaGastronomica("Fabrica de chocolate", 5 , 2));
-        servicioTuristico.add(new PaseoLacustre("Paseo Monte Isabella", 5 , "caminata"));
-        servicioTuristico.add(new ExcursionCultural("Recorrido historico", 6 , "Ruinas indigenas"));
-        
-        return servicioTuristico;
+    private List<RecursoAgencia> listaEntidades = new ArrayList<>();
+    
+    public GestorEntidades() {
         
     }
+    
+    public void agregarEntidad(RecursoAgencia entidad) {
+        listaEntidades.add(entidad);
+    }
+    
+    public String mostrarResumen() {
+        if (listaEntidades.isEmpty()) {
+            return "No hay datos guardados.";
+        }
+        
+        String resumen = "";
+        
+        for (RecursoAgencia entidad : listaEntidades) {
+            
+            if (entidad instanceof GuiaTuristico) {
+                
+                GuiaTuristico guiaTuristico = (GuiaTuristico) entidad;
+                
+                resumen += guiaTuristico.mostrarResumen() +
+                        "\n";
+                
+            } else if (entidad instanceof Vehiculo) {
+                
+                Vehiculo vehiculo = (Vehiculo) entidad;
+                
+                resumen += vehiculo.mostrarResumen() +
+                        "\n";
+                
+            } else if (entidad instanceof ColaboradorExterno) {
+                
+                ColaboradorExterno colaboradorExterno = (ColaboradorExterno) entidad;
+                
+                resumen += colaboradorExterno.mostrarResumen() +
+                        "\n";
+            }
+                 
+        }
+        
+        return resumen;
+    }
+   
 }
 
